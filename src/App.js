@@ -1,26 +1,36 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import axios from 'axios';
+import "./App.css";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import GameSettings from './components/GameSettings';
+import GameField from './components/GameField';
+import LeaderBoard from './components/LeaderBoard';
+
+import { Box } from "@chakra-ui/core";
+
+class App extends Component {
+  state = {
+    settings: {}
+  }
+
+  componentDidMount() {
+    axios.get('https://starnavi-frontend-test-task.herokuapp.com/game-settings')
+      .then(response => this.setState({settings: response.data}))
+  }
+
+  render() {
+    return (
+      <div className="App">
+        <Box w="650px" borderWidth="1px" p="24px" rounded="sm">
+          <GameSettings settings={this.state.settings} />
+          <GameField />
+        </Box>
+        <Box w="350px" borderWidth="1px" p="24px" rounded="sm">
+          <LeaderBoard />
+        </Box>  
+      </div>
+    );
+  }
 }
 
 export default App;

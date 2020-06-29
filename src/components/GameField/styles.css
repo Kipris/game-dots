@@ -1,0 +1,33 @@
+:root {
+  --field-width: 400px;
+}
+
+.Field {
+  box-sizing: content-box;
+  cursor: pointer;
+  display: flex;
+  flex-wrap: wrap;
+  border: 1px solid #E2E8F0;
+  border-radius: 2px;
+  width: var(--field-width);
+  margin: 0 auto;
+}
+
+.Field > div {
+  box-sizing: border-box;
+  border: 1px solid #E2E8F0;
+  width: calc(var(--field-width) / 5);
+  height: calc(var(--field-width)  / 5);
+}
+
+.selected {
+  background-color: rgb(49, 130, 206);
+}
+
+.user-chosen {
+  background-color: rgb(56, 161, 105);
+}
+
+.computer-chosen {
+  background-color: rgb(229, 62, 62);
+}
