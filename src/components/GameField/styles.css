@@ -2,7 +2,7 @@
   --field-width: 400px;
 }
 
-.Field {
+.field {
   box-sizing: content-box;
   cursor: pointer;
   display: flex;
@@ -13,7 +13,7 @@
   margin: 0 auto;
 }
 
-.Field > div {
+.field > div {
   box-sizing: border-box;
   border: 1px solid #E2E8F0;
   width: calc(var(--field-width) / 5);

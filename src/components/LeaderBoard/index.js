@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Spinner, Box, Text } from '@chakra-ui/core';
 import * as actions from '../../store/actions';
-import './styles.css';
 
 class LeaderBoard extends Component {
   componentDidMount() {

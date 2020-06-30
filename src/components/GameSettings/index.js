@@ -5,7 +5,6 @@ import {
   Grid, Box, Select, Input, Button, Text,
 } from '@chakra-ui/core';
 import * as actions from '../../store/actions';
-import './styles.css';
 
 class GameSettings extends Component {
   constructor(props) {

@@ -7,13 +7,16 @@ import './styles.css';
 class GameField extends Component {
   constructor(props) {
     super(props);
+    const capacity = 5;
+    const fieldKeys = Array.from(Array(capacity).keys()).map((col) => (
+      Array.from(Array(capacity).keys()).map((row) => `${row}${col}`))).flat();
+    const fieldClasses = new Array(capacity ** 2);
     this.state = {
-      capacity: 5,
+      capacity,
       userScore: 0,
       computerScore: 0,
-      fieldKeys: Array.from(Array(5).keys()).map((col) => (
-        Array.from(Array(5).keys()).map((row) => `${row}${col}`))).flat(),
-      fieldClasses: new Array(25),
+      fieldKeys,
+      fieldClasses,
       usedFields: [],
       currentIndex: null,
     };
@@ -34,7 +37,7 @@ class GameField extends Component {
     }
   }
 
-  createArray = (capacity = this.state.capacity) => (
+  createArray = ({ capacity } = this.state) => (
     Array.from(Array(capacity).keys())
   )
 
@@ -57,9 +60,12 @@ class GameField extends Component {
       })));
   }
 
-  getRandom = (min = 0, max = this.state.capacity - 1) => (
-    Math.floor(Math.random() * (max - min + 1)) + min
-  );
+  getRandom = () => {
+    const { capacity } = this.state;
+    const min = 0;
+    const max = capacity - 1;
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  };
 
   doGameStep = () => {
     const { capacity, usedFields } = this.state;
@@ -158,7 +164,7 @@ class GameField extends Component {
   render() {
     return (
       <>
-        <div className="Field">
+        <div className="field">
           {this.renderFieldDOM()}
         </div>
       </>
