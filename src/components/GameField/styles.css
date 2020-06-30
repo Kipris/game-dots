@@ -20,6 +20,10 @@
   height: calc(var(--field-width)  / 5);
 }
 
+.field > div:focus {
+  outline: none;
+}
+
 .selected {
   background-color: rgb(49, 130, 206);
 }
