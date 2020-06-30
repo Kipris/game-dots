@@ -25,6 +25,7 @@ class GameSettings extends Component {
   componentDidUpdate(prevProps) {
     const { newWinner, gameStatus } = this.props;
     if (!gameStatus && prevProps.gameStatus) {
+      // eslint-disable-next-line react/no-did-update-set-state
       this.setState({
         message: `${newWinner.winner} won`,
         buttonText: 'Play again',
